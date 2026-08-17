@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+.idea
+target
+data
+*.log
+*.mv.db
+*.trace.db
+Dockerfile
+docker-compose*.yml
+README.Docker.md
