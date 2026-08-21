@@ -1,0 +1,24 @@
+.form { display: grid; gap: var(--space-5); }
+.row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
+.link { color: var(--color-primary); font-size: .875rem; font-weight: 700; text-decoration: none; }
+.link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.submit { min-height: 48px; border: 0; border-radius: var(--radius-md); color: #fff; background: var(--color-primary); font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgb(79 70 229 / 20%); }
+.submit:hover:not(:disabled) { background: var(--color-primary-hover); }
+.submit:focus-visible, .link:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+.submit:disabled { cursor: wait; opacity: .65; }
+.switch { margin: var(--space-6) 0 0; color: var(--color-text-muted); font-size: .875rem; text-align: center; }
+.checkbox { display: grid; grid-template-columns: 1.25rem 1fr; gap: var(--space-3); color: var(--color-text-muted); font-size: .85rem; line-height: 1.5; }
+.checkbox input { width: 1.125rem; height: 1.125rem; margin-top: .1rem; accent-color: var(--color-primary); }
+.checkboxError { color: var(--color-danger); font-size: .78rem; }
+.roleGroup { min-width: 0; margin: 0; padding: 0; border: 0; }
+.roleGroup legend { margin-bottom: var(--space-3); font-size: .875rem; font-weight: 700; }
+.roleOptions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.roleOption { position: relative; min-width: 0; cursor: pointer; }
+.roleOption input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.roleOption span { min-height: 76px; display: grid; align-content: center; gap: var(--space-1); padding: var(--space-3); border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-surface); transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease; }
+.roleOption strong { font-size: .875rem; }
+.roleOption small { color: var(--color-text-muted); font-size: .72rem; line-height: 1.35; }
+.roleOption input:checked + span { border-color: var(--color-primary); background: var(--color-primary-soft); box-shadow: inset 0 0 0 1px var(--color-primary); }
+.roleOption input:focus-visible + span { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+@media (max-width: 22rem) { .roleOptions { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .roleOption span { transition: none; } }

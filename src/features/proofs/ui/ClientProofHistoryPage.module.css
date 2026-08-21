@@ -1,0 +1,48 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.heading h1 { margin: 0; }
+.eyebrow { color: var(--color-primary); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; }
+.summary { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); }
+.summary :global(.ant-card) { height: 100%; border-color: var(--color-border); }
+.toolbar { margin-bottom: var(--space-5); box-shadow: var(--shadow-card-sm); }
+.toolbar :global(.ant-card-body) { display: grid; gap: var(--space-3); }
+.feedback { margin-bottom: var(--space-4); }
+.resultHeading { margin-bottom: var(--space-3); }
+.grid { display: grid; gap: var(--space-4); }
+.cardArticle, .proofCard { height: 100%; }
+.proofCard { border-color: var(--color-border); box-shadow: var(--shadow-card-sm); }
+.proofCard h3 { margin-block: var(--space-4) var(--space-3); font-size: 1.1rem; overflow-wrap: anywhere; }
+.cardMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-block: var(--space-4); }
+.cardMeta > div { min-width: 0; display: grid; gap: var(--space-1); }
+.cardMeta strong { overflow-wrap: anywhere; }
+.reason { margin-bottom: var(--space-4); white-space: pre-wrap; overflow-wrap: anywhere; }
+.viewButton { min-height: 44px; }
+.pagination { margin-top: var(--space-6); }
+.detail { display: grid; gap: var(--space-5); }
+.detailHero { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-primary-soft); }
+.detailHero h3 { margin-block: var(--space-2); overflow-wrap: anywhere; }
+.reviewContent { white-space: pre-wrap; overflow-wrap: anywhere; }
+.images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.images :global(.ant-image), .images img { width: 100%; }
+.images img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); }
+
+@media (min-width: 48rem) {
+  .heading { flex-direction: row; align-items: center; justify-content: space-between; }
+  .summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .toolbar :global(.ant-card-body) { grid-template-columns: minmax(0, 1fr) 15rem; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 90rem) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .proofCard { transition: transform 160ms ease, box-shadow 160ms ease; }
+  .proofCard:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+}

@@ -1,0 +1,89 @@
+.dashboard { min-height: calc(100vh - 72px); background: var(--color-background); }
+.dashboardShell { width: min(1440px, 100%); margin-inline: auto; }
+.sidebar { padding: var(--space-5) var(--space-4); border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
+.userSummary { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.userSummary div { min-width: 0; display: grid; }
+.accountNav { display: grid; grid-template-columns: 1fr; gap: var(--space-2); }
+.accountNav a { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-2); border-radius: var(--radius-md); color: var(--color-text-muted); font-weight: 650; text-align: center; text-decoration: none; }
+.accountNav a:hover, .accountNav a:focus-visible, .activeNav { color: var(--color-primary); background: var(--color-primary-soft); }
+.accountNav a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.profileCard { display: none; margin-top: var(--space-5); }
+.profileCard :global(.ant-btn) { padding-inline: 0; }
+.content { min-width: 0; padding: var(--space-5) var(--space-4) var(--space-8); }
+.heading { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-6); }
+.heading h1 { margin: var(--space-1) 0 var(--space-2); font-size: clamp(1.75rem, 5vw, 2.5rem); }
+.heading p { max-width: 44rem; margin: 0; }
+.eyebrow { color: var(--color-primary); font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+.stats { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); }
+.stats :global(.ant-card) { border-color: var(--color-border); box-shadow: var(--shadow-card-sm); }
+.stats :global(.ant-statistic-content-prefix) { color: var(--color-primary); }
+.toolbar { margin-bottom: var(--space-6); border-color: var(--color-border); }
+.toolbar :global(.ant-card-body) { display: grid; gap: var(--space-3); }
+.listHeading { margin-bottom: var(--space-4); }
+.listHeading h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.6rem); }
+.jobList { display: grid; gap: var(--space-4); }
+.jobCard { overflow: hidden; border-color: var(--color-border); box-shadow: var(--shadow-card-sm); }
+.jobCard:hover { border-color: var(--color-border-strong); }
+.clientJobGrid { display: grid; gap: var(--space-3); }
+.clientJobCard { border-color: var(--color-border); box-shadow: var(--shadow-card-sm); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.clientJobCard:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.clientJobCard h4 { margin: var(--space-3) 0 var(--space-2); font-size: 1.05rem; }
+.clientJobCard p { min-height: 2.8em; margin-bottom: var(--space-3); color: var(--color-text-muted); line-height: 1.45; }
+.clientJobMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); padding-block: var(--space-3); border-block: 1px solid var(--color-border); }
+.clientJobMeta > div { min-width: 0; display: grid; gap: var(--space-1); }
+.clientJobMeta span { font-size: .75rem; }
+.clientJobMeta strong { overflow: hidden; color: var(--color-text); font-size: .875rem; text-overflow: ellipsis; white-space: nowrap; }
+.clientJobAction { margin-top: var(--space-2); padding-inline: 0; }
+.detailHeading { margin-bottom: var(--space-5); }
+.detailHeading h1 { margin: var(--space-2) 0 var(--space-3); }
+.detailGrid { display: grid; gap: var(--space-4); }
+.detailMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.detailMeta > div { min-width: 0; display: grid; gap: var(--space-1); }
+.detailMeta strong { overflow-wrap: anywhere; }
+.detailDescription { margin: 0; white-space: pre-wrap; }
+.reviewContents { display: grid; gap: var(--space-3); }
+.reviewContents p { margin: var(--space-2) 0 0; }
+.detailNotice { margin-top: var(--space-4); }
+.jobContent { display: grid; gap: var(--space-5); }
+.jobMain { min-width: 0; }
+.jobMain h3 { margin: var(--space-3) 0 var(--space-2); font-size: clamp(1.1rem, 3vw, 1.3rem); }
+.jobMain p { color: var(--color-text-muted); line-height: 1.65; }
+.client { padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+.client > div { display: grid; }
+.client span { color: var(--color-text-subtle); font-size: .82rem; }
+.client svg { color: var(--color-warning); }
+.jobAside { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-background); }
+.jobAside > div { min-width: 0; display: grid; gap: var(--space-1); }
+.jobAside strong { color: var(--color-success); font-size: 1.05rem; }
+.jobAside :global(.ant-btn) { grid-column: 1 / -1; }
+.profilePage { min-height: calc(100vh - 72px); padding-block: clamp(var(--space-7), 8vw, var(--space-8)); background: var(--color-background); }
+.profileContainer { width: min(var(--container-width), calc(100% - 32px)); margin-inline: auto; }
+.profileContainer h1 { margin: 0 0 var(--space-8); text-align: center; }
+.profileContainer :global(.ant-empty-image) { height: auto; color: var(--color-primary); font-size: 3rem; }
+
+@media (min-width: 48rem) {
+  .accountNav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .heading { flex-direction: row; align-items: center; justify-content: space-between; }
+  .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .toolbar :global(.ant-card-body) { grid-template-columns: minmax(0, 1fr) 14rem; }
+  .jobContent { grid-template-columns: minmax(0, 1fr) 17rem; }
+  .clientJobGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .clientJobMeta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .detailGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detailWide { grid-column: 1 / -1; }
+  .jobAside { grid-template-columns: 1fr; align-content: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clientJobCard { transition: none; }
+  .clientJobCard:hover { transform: none; }
+}
+
+@media (min-width: 64rem) {
+  .dashboardShell { display: grid; grid-template-columns: 16rem minmax(0, 1fr); }
+  .sidebar { min-height: calc(100vh - 72px); padding: var(--space-7) var(--space-5); border-right: 1px solid var(--color-border); border-bottom: 0; }
+  .accountNav { grid-template-columns: 1fr; }
+  .accountNav a { justify-content: flex-start; padding-inline: var(--space-4); text-align: start; }
+  .profileCard { display: block; }
+  .content { padding: var(--space-7); }
+}

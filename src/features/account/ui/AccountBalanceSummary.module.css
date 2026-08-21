@@ -1,0 +1,14 @@
+.summary { display: flex; align-items: center; gap: var(--space-4); }
+.balanceItem { min-width: 8rem; display: flex; align-items: center; gap: var(--space-2); }
+.icon { color: var(--color-primary); font-size: 1.25rem; }
+.balanceText { min-width: 0; display: grid; line-height: 1.2; }
+.balanceText span { color: var(--color-text-subtle); font-size: .75rem; }
+.balanceText strong { color: var(--color-text); font-size: 1rem; white-space: nowrap; }
+.unavailable { max-width: 10rem; color: var(--color-text-subtle); font-size: .75rem; }
+.retry { padding-inline: 0; }
+
+@media (max-width: 63.999rem) {
+  .summary { align-items: stretch; flex-direction: column; }
+  .balanceItem { min-height: 44px; }
+  .summary :global(.ant-btn-primary) { width: 100%; }
+}

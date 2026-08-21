@@ -1,0 +1,45 @@
+.page { min-width: 0; }
+.pageHeader { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); margin-block-end: var(--space-5); }
+.pageHeader h1 { margin-block: var(--space-1); font-size: clamp(1.75rem, 5vw, 2.35rem); }
+.pageHeader p { margin: 0; color: var(--color-text-muted); }
+.toolbar { display: grid; gap: var(--space-2); margin-block-end: var(--space-4); }
+.toolbar label { font-weight: 700; }
+.toolbar :global(.ant-select) { width: 100%; }
+.listAlert { margin-block-end: var(--space-4); }
+.desktopTable { display: none; }
+.mobileList, .cardList, .skeletonList { display: grid; gap: var(--space-4); min-width: 0; }
+.withdrawalCard { min-width: 0; border-color: var(--color-border); }
+.cardHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
+.cardHeader > div, .freelancerIdentity { min-width: 0; display: grid; gap: var(--space-1); }
+.cardHeader strong, .freelancerIdentity > *, .cardMeta dd { overflow-wrap: anywhere; }
+.freelancerIdentity { margin-block: var(--space-4); }
+.cardMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin: 0 0 var(--space-4); }
+.cardMeta div { min-width: 0; }
+.cardMeta dt { color: var(--color-text-muted); }
+.cardMeta dd { margin: var(--space-1) 0 0; font-weight: 700; }
+.cardMeta .cardNetAmount { grid-column: 1 / -1; padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-primary-soft); }
+.actionButtons { display: grid; grid-template-columns: 1fr; gap: var(--space-2); min-width: 0; }
+.actionButtons :global(.ant-btn) { min-height: 44px; }
+.drawerContent, .bankDetails { display: grid; gap: var(--space-5); min-width: 0; }
+.drawerContent section > h4, .qrSection > h5 { margin-block-start: 0; }
+.drawerContent :global(.ant-descriptions-item-content), .drawerContent :global(.ant-descriptions-item-label) { overflow-wrap: anywhere; }
+.amountSummary { display: grid; gap: var(--space-3); }
+.amountSummary > div { min-width: 0; display: grid; gap: var(--space-1); }
+.amountSummary strong, .amountSummary h3 { overflow-wrap: anywhere; }
+.amountSummary h3 { margin: 0; color: var(--color-primary); }
+.netAmount { padding: var(--space-4); border-radius: var(--radius-md); background: var(--color-primary-soft); }
+.qrSection { min-width: 0; }
+.qrImage { display: block; width: min(100%, 22rem); height: auto; aspect-ratio: 1; object-fit: contain; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.actionModal :global(.ant-alert), .actionModal :global(.ant-descriptions), .actionModal :global(.ant-typography) { margin-block-end: var(--space-4); }
+.actionModal :global(.ant-descriptions-item-content), .actionModal :global(.ant-descriptions-item-label) { overflow-wrap: anywhere; }
+
+@media (min-width: 48rem) {
+  .pageHeader { flex-direction: row; align-items: center; justify-content: space-between; }
+  .toolbar { grid-template-columns: auto minmax(15rem, 22rem); align-items: center; }
+  .toolbar :global(.ant-select) { width: auto; }
+  .desktopTable { display: block; }
+  .mobileList { display: none; }
+  .amountSummary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .netAmount { grid-column: 1 / -1; }
+  .actionButtons { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

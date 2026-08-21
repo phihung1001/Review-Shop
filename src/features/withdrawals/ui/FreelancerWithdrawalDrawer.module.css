@@ -1,0 +1,28 @@
+.drawerContent { min-width: 0; display: grid; gap: var(--space-5); }
+.balanceCard { border: 0; background: var(--color-primary-soft); }
+.balanceCard h3 { margin: 0; overflow-wrap: anywhere; }
+.walletIcon, .bankIcon { display: grid; flex: 0 0 auto; place-items: center; color: var(--color-primary); background: var(--color-surface); border-radius: var(--radius-md); }
+.walletIcon { width: 3rem; height: 3rem; font-size: 1.35rem; }
+.bankIcon { width: 2.75rem; height: 2.75rem; font-size: 1.1rem; }
+.formCard { border-color: var(--color-border); }
+.formAlert, .notice { margin-bottom: var(--space-4); overflow-wrap: anywhere; }
+.twoColumns { display: grid; gap: 0; }
+.methodList { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+.methodCard { width: 100%; min-width: 0; min-height: 76px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-3); align-items: center; padding: var(--space-3); color: var(--color-text); text-align: start; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); cursor: pointer; }
+.methodCard:hover, .selectedMethod { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-focus); }
+.methodCard:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.methodInfo { min-width: 0; display: grid; gap: var(--space-1); }
+.methodInfo > * { overflow-wrap: anywhere; }
+.methodInfo span { color: var(--color-text-muted); }
+.methodTags { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.checkIcon { margin-inline-start: auto; color: var(--color-success); font-size: 1.1rem; }
+.amountInput { width: 100%; }
+.receipt { width: min(100%, 28rem); margin-inline: auto; text-align: start; }
+.receipt :global(.ant-card-body) { display: grid; gap: var(--space-3); }
+.receipt div { display: flex; justify-content: space-between; gap: var(--space-3); }
+
+@media (min-width: 48rem) {
+  .twoColumns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .methodCard { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .methodTags { grid-column: auto; justify-content: flex-end; }
+}

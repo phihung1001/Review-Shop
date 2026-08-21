@@ -1,0 +1,40 @@
+.pageHeading { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-6); }
+.pageHeading h1 { margin: var(--space-1) 0 var(--space-2); font-size: clamp(1.75rem, 5vw, 2.5rem); }
+.pageHeading p { max-width: 44rem; margin: 0; }
+.backLink { margin-inline-start: calc(var(--space-3) * -1); padding-inline: var(--space-3); }
+.eyebrow { display: block; color: var(--color-primary); font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+.depositGrid { display: grid; gap: var(--space-5); align-items: start; }
+.formCard, .instructionCard, .paymentCard { border-color: var(--color-border); box-shadow: var(--shadow-card-sm); }
+.formCard > p { margin-bottom: var(--space-6); }
+.formAlert { margin-bottom: var(--space-5); }
+.amountInput { width: 100%; }
+.amountInput :global(.ant-input-number-input) { font-size: 1.25rem; font-weight: 700; }
+.presets { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); margin: calc(var(--space-2) * -1) 0 var(--space-5); }
+.presets > span { margin-inline-end: var(--space-1); }
+.formNotice { margin-bottom: var(--space-5); }
+.instructionList { display: grid; gap: var(--space-4); margin: 0 0 var(--space-6); padding-inline-start: var(--space-6); color: var(--color-text-muted); line-height: 1.6; }
+.instructionList li::marker { color: var(--color-primary); font-weight: 700; }
+.paymentCard { overflow: hidden; }
+.paymentHeading { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); }
+.paymentHeading h2 { margin: var(--space-1) 0 var(--space-2); }
+.paymentHeading p { max-width: 48rem; margin: 0; }
+.paymentGrid { display: grid; gap: var(--space-6); }
+.qrSection { display: grid; justify-items: center; gap: var(--space-3); }
+.qrFrame { width: min(100%, 20rem); min-height: 20rem; display: grid; place-items: center; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface-soft); }
+.qrImage { max-width: 100%; }
+.qrImage :global(img) { display: block; max-width: 100%; height: auto; }
+.paymentDetails { display: grid; align-content: start; gap: var(--space-4); }
+.copyField { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-soft); }
+.copyValue { min-width: 0; display: grid; gap: var(--space-1); }
+.copyValue strong { overflow-wrap: anywhere; font-size: 1rem; }
+.paymentActions { margin-top: var(--space-6); }
+
+@media (min-width: 48rem) {
+  .pageHeading { flex-direction: row; align-items: center; justify-content: space-between; }
+  .depositGrid { grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr); }
+  .paymentGrid { grid-template-columns: minmax(16rem, .75fr) minmax(0, 1.25fr); align-items: center; }
+}
+
+@media (min-width: 64rem) {
+  .paymentGrid { grid-template-columns: minmax(20rem, .8fr) minmax(0, 1.2fr); }
+}

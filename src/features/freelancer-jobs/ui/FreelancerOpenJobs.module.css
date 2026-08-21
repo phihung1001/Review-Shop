@@ -1,0 +1,53 @@
+.heading { margin-bottom: var(--space-5); }
+.heading h1 { margin: var(--space-1) 0 var(--space-2); font-size: clamp(1.75rem, 5vw, 2.5rem); }
+.heading p { max-width: 44rem; }
+.eyebrow { color: var(--color-primary); font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+.toolbar { margin-bottom: var(--space-5); }
+.toolbar :global(.ant-card-body) { display: grid; gap: var(--space-3); }
+.listHeading { margin-bottom: var(--space-4); }
+.listHeading h2 { margin: 0; }
+.grid { display: grid; gap: var(--space-4); }
+.card { border-color: var(--color-border); box-shadow: var(--shadow-card-sm); }
+.card h3 { margin: var(--space-3) 0 var(--space-2); font-size: 1.1rem; overflow-wrap: anywhere; }
+.meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding-block: var(--space-4); border-block: 1px solid var(--color-border); }
+.meta > div, .detailMeta > div { min-width: 0; display: grid; gap: var(--space-1); }
+.meta strong, .detailMeta strong { overflow-wrap: anywhere; }
+.actions { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
+.actions :global(.ant-btn) { min-height: 44px; }
+.detail { display: grid; gap: var(--space-5); }
+.detailText { white-space: pre-wrap; }
+.detailMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.reviewList { display: grid; gap: var(--space-3); }
+.reviewImages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-top: var(--space-3); }
+.reviewImages :global(.ant-image), .reviewImages img { width: 100%; }
+.reviewImages img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); }
+.accountChoices { width: 100%; display: grid; gap: var(--space-3); }
+.accountChoice { min-width: 0; min-height: 72px; display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease; }
+.accountChoice:hover, .accountChoiceSelected { border-color: var(--color-primary); box-shadow: var(--shadow-card); }
+.accountChoice:focus-within { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.accountIdentity { min-width: 0; display: grid; gap: var(--space-1); }
+.accountIdentity > span { overflow-wrap: anywhere; }
+.accountLevel { color: var(--color-warning); }
+.claimAlert { margin-bottom: var(--space-4); overflow-wrap: anywhere; }
+.contentChoice { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
+.contentChoice :global(.ant-select) { width: 100%; }
+.assignmentWork { min-width: 0; display: grid; gap: var(--space-4); }
+.assignmentWork > * { min-width: 0; }
+.assignmentWork :global(.ant-alert-message),
+.assignmentWork :global(.ant-alert-description) { overflow-wrap: anywhere; word-break: break-word; }
+.assignmentWork h3 { margin: 0; overflow-wrap: anywhere; }
+.assignmentMeta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-background); }
+.assignmentMeta > div { min-width: 0; display: grid; gap: var(--space-1); }
+.assignmentMeta strong { overflow-wrap: anywhere; }
+.proofActions { margin-top: var(--space-5); }
+.proofActions :global(.ant-btn) { max-width: 100%; white-space: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  .accountChoice { transition: none; }
+}
+
+@media (min-width: 48rem) {
+  .toolbar :global(.ant-card-body) { grid-template-columns: minmax(0, 1fr) 15rem; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
