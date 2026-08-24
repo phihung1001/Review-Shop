@@ -128,9 +128,9 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "http://192.168.170.101:5173",
-                "https://*.ngrok-free.app"
+                "https://danhgia.shop",
+                "https://www.danhgia.shop",
+                "http://localhost:5173"
         ));
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
