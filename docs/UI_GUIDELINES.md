@@ -1,5 +1,30 @@
 # Frontend UI Engineering Guidelines
 
+## Impeccable visual quality
+
+Review Shop follows the visual language documented in the repository root files
+`PRODUCT.md` and `DESIGN.md`. These files are the product and design source of
+truth for future UI work.
+
+- Avoid generic AI-generated patterns: purple/blue gradients, decorative glow,
+  glassmorphism, nested cards, repeated icon-card grids and gradient text.
+- Establish hierarchy with typography, spacing, dividers and alignment before
+  adding containers or decorative effects.
+- Use a deliberate visual direction tied to Review Shop's promise of transparent
+  work, reviews and payouts.
+- Keep brand surfaces and operational dashboard surfaces distinct: the homepage
+  persuades with evidence; dashboards optimize scanning and action.
+- Use specific, plain Vietnamese copy. Avoid generic startup buzzwords and
+  redundant labels.
+- Use `Be Vietnam Pro` as the single approved UI font. It must be explicitly
+  loaded with Vietnamese glyph support in `index.html`; use the fallback stack
+  `Segoe UI`, `Noto Sans`, `Arial`, sans-serif. Do not switch Vietnamese UI
+  headings to Georgia, Times New Roman or another unapproved serif font.
+- Before handoff, perform an Impeccable-style review for hierarchy, cognitive
+  load, typography, contrast, responsive behavior and anti-patterns. If the
+  optional CLI is available, `npx impeccable detect src/` may be used as an
+  additional diagnostic.
+
 Tài liệu này là UI contract bắt buộc của Review Shop. Mục tiêu là tạo giao diện nhất quán, dễ sử dụng, accessible, responsive và có khả năng mở rộng lâu dài.
 
 ## 1. Responsive theo hướng mobile-first

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import {
-  Alert, Avatar, Button, Card, Col, Collapse, Empty, Flex, Progress, Rate, Row,
+  Alert, Avatar, Button, Card, Col, Collapse, Empty, Flex, Rate, Row,
   Segmented, Skeleton, Space, Statistic, Steps, Tag, Typography,
 } from 'antd'
 import {
   ArrowRightOutlined, CalendarOutlined, CrownOutlined,
-  RocketOutlined, SafetyCertificateFilled, TeamOutlined,
+  RocketOutlined, TeamOutlined,
 } from '@ant-design/icons'
 import { audiences, faqs, heroSignals, metrics, testimonials, trustItems, workflow } from './model/homeData.js'
 import { getOpenFreelancerJobs } from '@/features/freelancer-jobs/api/freelancerJobApi.js'
@@ -15,12 +15,12 @@ import styles from './HomePage.module.css'
 
 const { Title, Paragraph, Text } = Typography
 
-function SectionHeading({ eyebrow, title, description, centered = false }) {
+function SectionHeading({ eyebrow, title, description, centered = false, dark = false }) {
   return (
     <header className={`${styles.sectionHeading} ${centered ? styles.centered : ''}`}>
       <Text className={styles.eyebrow}>{eyebrow}</Text>
       <Title level={2}>{title}</Title>
-      {description && <Paragraph>{description}</Paragraph>}
+      {description && <Paragraph className={dark ? styles.darkDescription : undefined}>{description}</Paragraph>}
     </header>
   )
 }
@@ -43,15 +43,20 @@ export function HeroSection() {
             </Flex>
           </Col>
           <Col xs={24} lg={11}>
-            <div className={styles.heroVisual} aria-label="Minh họa trải nghiệm trên Review Shop">
-              <Card className={styles.projectCard} variant="borderless">
-                <Flex justify="space-between" align="start"><div><Text type="secondary">Dự án nổi bật</Text><Title level={4}>Landing page thương hiệu</Title></div><Tag color="green">Đang thực hiện</Tag></Flex>
-                <Flex gap="small" wrap><Tag>React</Tag><Tag>UI/UX</Tag><Tag>Responsive</Tag></Flex>
-                <div className={styles.progress}><Flex justify="space-between"><Text>Tiến độ</Text><Text strong>72%</Text></Flex><Progress percent={72} showInfo={false} /></div>
-                <Flex justify="space-between" align="center"><Avatar.Group><Avatar>NA</Avatar><Avatar className={styles.avatarAccent}>HL</Avatar></Avatar.Group><Text strong>15.000.000 ₫</Text></Flex>
-              </Card>
-              <Card size="small" className={styles.ratingCard}><Flex gap="small" align="center"><Avatar className={styles.avatarGold}>TH</Avatar><div><Text strong>Thu Hà</Text><div><Rate disabled defaultValue={5} className={styles.rateSmall} /></div></div></Flex><Paragraph>“Trao đổi rõ ràng, kết quả vượt mong đợi.”</Paragraph></Card>
-              <div className={styles.secureBadge}><SafetyCertificateFilled aria-hidden="true" /><span><strong>Quy trình minh bạch</strong><small>Từng mốc đều rõ ràng</small></span></div>
+            <div className={styles.heroVisual} aria-label="Bản ghi công việc minh họa trên Review Shop">
+              <div className={styles.ledgerPanel}>
+                <div className={styles.ledgerHeader}><Text type="secondary">Bản ghi công việc / 024</Text><Tag color="green">Đang thực hiện</Tag></div>
+                <Title level={3}>Landing page thương hiệu</Title>
+                <div className={styles.ledgerRule} />
+                <div className={styles.ledgerRows}>
+                  <div><Text type="secondary">Người thực hiện</Text><Text strong>Hà Linh · Level 4</Text></div>
+                  <div><Text type="secondary">Mốc hiện tại</Text><Text strong>Wireframe đã duyệt</Text></div>
+                  <div><Text type="secondary">Giá trị công việc</Text><Text strong>15.000.000 ₫</Text></div>
+                </div>
+                <div className={styles.ledgerProgress}><span style={{ '--progress': '72%' }} /><Text>72% tiến độ</Text></div>
+                <div className={styles.ledgerFooter}><Avatar.Group><Avatar>NA</Avatar><Avatar className={styles.avatarAccent}>HL</Avatar></Avatar.Group><Text type="secondary">Cập nhật 12 phút trước</Text></div>
+              </div>
+              <div className={styles.reviewNote}><Text strong>Review đã xác nhận</Text><Rate disabled defaultValue={5} className={styles.rateSmall} /><Paragraph>Trao đổi rõ ràng, kết quả đúng mong đợi.</Paragraph></div>
             </div>
           </Col>
         </Row>
@@ -108,7 +113,7 @@ export function WorkflowSection() {
 }
 
 function TrustSection() {
-  return <section className={`${styles.section} ${styles.darkSection}`}><div className={styles.container}><SectionHeading centered eyebrow="Niềm tin được xây từ quy trình" title="An tâm hơn trong mỗi lần hợp tác" description="Các nguyên tắc sản phẩm hướng tới sự rõ ràng, công bằng và trách nhiệm cho cả hai phía." /><Row gutter={[24, 24]}>{trustItems.map(({ icon: Icon, ...item }) => <Col xs={24} sm={12} lg={6} key={item.title}><div className={styles.trustItem}><Icon aria-hidden="true" /><Title level={4}>{item.title}</Title><Paragraph>{item.description}</Paragraph></div></Col>)}</Row></div></section>
+  return <section className={`${styles.section} ${styles.darkSection}`}><div className={styles.container}><SectionHeading centered dark eyebrow="Niềm tin được xây từ quy trình" title="An tâm hơn trong mỗi lần hợp tác" description="Các nguyên tắc sản phẩm hướng tới sự rõ ràng, công bằng và trách nhiệm cho cả hai phía." /><Row gutter={[24, 24]}>{trustItems.map(({ icon: Icon, ...item }) => <Col xs={24} sm={12} lg={6} key={item.title}><div className={styles.trustItem}><Icon aria-hidden="true" /><Title level={4}>{item.title}</Title><Paragraph className={styles.trustDescription}>{item.description}</Paragraph></div></Col>)}</Row></div></section>
 }
 
 function TestimonialsSection() {
@@ -120,7 +125,7 @@ function FaqSection() {
 }
 
 function FinalCtaSection() {
-  return <section className={styles.finalCta}><div className={styles.container}><div className={styles.ctaPanel}><CalendarOutlined className={styles.ctaIcon} aria-hidden="true" /><Title level={2}>Sẵn sàng cho lần hợp tác tiếp theo?</Title><Paragraph>Chọn hành trình phù hợp và bắt đầu xây dựng giá trị cùng cộng đồng Review Shop.</Paragraph><Flex justify="center" gap="middle" wrap><Button type="primary" size="large" href="/register?role=CLIENT">Tôi cần Freelancer</Button><Button size="large" href="/register?role=FREELANCER">Tôi là Freelancer</Button></Flex></div></div></section>
+  return <section className={styles.finalCta}><div className={styles.container}><div className={styles.ctaPanel}><CalendarOutlined className={styles.ctaIcon} aria-hidden="true" /><Title level={2}>Sẵn sàng cho lần hợp tác tiếp theo?</Title><Paragraph className={styles.ctaDescription}>Chọn hành trình phù hợp và bắt đầu xây dựng giá trị cùng cộng đồng Review Shop.</Paragraph><Flex justify="center" gap="middle" wrap><Button type="primary" size="large" href="/register?role=CLIENT">Tôi cần Freelancer</Button><Button size="large" href="/register?role=FREELANCER">Tôi là Freelancer</Button></Flex></div></div></section>
 }
 
 export function HomePage() {
