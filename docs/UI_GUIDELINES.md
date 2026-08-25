@@ -2,7 +2,7 @@
 
 ## Impeccable visual quality
 
-Review Shop follows the visual language documented in the repository root files
+Review GG Maps follows the visual language documented in the repository root files
 `PRODUCT.md` and `DESIGN.md`. These files are the product and design source of
 truth for future UI work.
 
@@ -10,8 +10,8 @@ truth for future UI work.
   glassmorphism, nested cards, repeated icon-card grids and gradient text.
 - Establish hierarchy with typography, spacing, dividers and alignment before
   adding containers or decorative effects.
-- Use a deliberate visual direction tied to Review Shop's promise of transparent
-  work, reviews and payouts.
+- Use a deliberate visual direction tied to Review GG Maps' promise of transparent
+  Review GG Maps' Google Maps evaluation, evidence and outcomes.
 - Keep brand surfaces and operational dashboard surfaces distinct: the homepage
   persuades with evidence; dashboards optimize scanning and action.
 - Use specific, plain Vietnamese copy. Avoid generic startup buzzwords and
@@ -25,7 +25,7 @@ truth for future UI work.
   optional CLI is available, `npx impeccable detect src/` may be used as an
   additional diagnostic.
 
-Tài liệu này là UI contract bắt buộc của Review Shop. Mục tiêu là tạo giao diện nhất quán, dễ sử dụng, accessible, responsive và có khả năng mở rộng lâu dài.
+Tài liệu này là UI contract bắt buộc của Review GG Maps. Mục tiêu là tạo giao diện nhất quán, dễ sử dụng, accessible, responsive và có khả năng mở rộng lâu dài.
 
 ## 1. Responsive theo hướng mobile-first
 

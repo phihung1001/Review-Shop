@@ -6,6 +6,7 @@ import { authSession } from '@/features/auth/model/authSession.js'
 import { navigate } from '@/shared/lib/navigation.js'
 import { ThemeToggle } from '@/app/theme/ThemeToggle.jsx'
 import styles from './AdminLayout.module.css'
+import { ReviewGgmMark } from '@/shared/ui/branding/ReviewGgmMark.jsx'
 
 const { Header, Sider, Content } = Layout
 const items = [
@@ -40,7 +41,7 @@ export function AdminLayout({ pathname, children }) {
 
   return (
     <Layout className={styles.shell}>
-      {desktop && <Sider width={260} theme="light" className={styles.sider}><a className={styles.brand} href="/">ReviewShop Admin</a><Navigation pathname={pathname} /></Sider>}
+      {desktop && <Sider width={260} theme="light" className={styles.sider}><a className={styles.brand} href="/"><span className={styles.brandMark}><ReviewGgmMark /></span><span>Review GG Maps Admin</span></a><Navigation pathname={pathname} /></Sider>}
       <Layout>
         <Header className={styles.header}>
           <Space>
@@ -55,7 +56,7 @@ export function AdminLayout({ pathname, children }) {
         </Header>
         <Content className={styles.content}>{children}</Content>
       </Layout>
-      <Drawer title="ReviewShop Admin" placement="left" size="min(320px, 90vw)" open={!desktop && drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Drawer title="Review GG Maps Admin" placement="left" size="min(320px, 90vw)" open={!desktop && drawerOpen} onClose={() => setDrawerOpen(false)}>
         <Navigation pathname={pathname} onNavigate={() => setDrawerOpen(false)} />
       </Drawer>
     </Layout>

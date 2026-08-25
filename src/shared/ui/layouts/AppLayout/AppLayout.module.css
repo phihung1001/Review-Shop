@@ -4,7 +4,7 @@
 .header { position: sticky; top: 0; z-index: 20; height: 72px; border-bottom: 1px solid var(--color-border); background: var(--color-header); }
 .header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
 .brand { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-text); font-size: 1.15rem; font-weight: 800; letter-spacing: -.035em; text-decoration: none; }
-.brandMark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: var(--radius-sm); color: var(--color-surface); background: var(--color-text); box-shadow: var(--shadow-card-sm); }
+.brandMark { width: 34px; height: 38px; display: grid; place-items: center; }
 .brandAccent { color: var(--color-primary); }
 .desktopNav { display: none; align-items: center; gap: clamp(1rem, 2vw, 2rem); }
 .desktopNav a, .mobileNav a { color: var(--color-text-muted); font-size: .875rem; font-weight: 600; text-decoration: none; }

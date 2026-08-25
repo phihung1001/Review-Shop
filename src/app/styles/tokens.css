@@ -1,5 +1,8 @@
 :root {
   --color-primary: #b45309;
+  --color-brand-blue: #0878d1;
+  --color-brand-teal: #16b5bd;
+  --color-brand-star: #f4b400;
   --color-primary-hover: #92400e;
   --color-primary-soft: #fff4df;
   --color-focus: rgb(180 83 9 / 30%);
@@ -47,6 +50,9 @@
 
 :root[data-theme='dark'] {
   --color-primary: #f0a45b;
+  --color-brand-blue: #45a4ef;
+  --color-brand-teal: #49cbd0;
+  --color-brand-star: #ffd15c;
   --color-primary-hover: #ffc184;
   --color-primary-soft: #3d2b1b;
   --color-focus: rgb(240 164 91 / 38%);

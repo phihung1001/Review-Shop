@@ -1,24 +1,25 @@
 import styles from './AuthLayout.module.css'
+import { ReviewGgmMark } from '@/shared/ui/branding/ReviewGgmMark.jsx'
 
 export function AuthLayout({ children, title, description }) {
   return (
     <main className={styles.page}>
-      <section className={styles.intro} aria-label="Giới thiệu Review Shop">
-        <a className={styles.brand} href="/" aria-label="Review Shop - Trang chủ">Review<span>Shop</span></a>
+      <section className={styles.intro} aria-label="Giới thiệu Review GG Maps">
+        <a className={styles.brand} href="/" aria-label="Review GG Maps - Trang chủ"><span className={styles.brandMark}><ReviewGgmMark /></span><span>Review<span>GGM</span></span></a>
         <div className={styles.introContent}>
-          <p className={styles.eyebrow}>Cộng đồng mua sắm thông thái</p>
-          <h1>Review thật.<br />Lựa chọn tốt hơn.</h1>
-          <p>Khám phá đánh giá đáng tin cậy và chia sẻ trải nghiệm của bạn với cộng đồng.</p>
+          <p className={styles.eyebrow}>Đánh giá Google Maps có bằng chứng</p>
+          <h1>Kiểm tra rõ ràng.<br />Đánh giá có cơ sở.</h1>
+          <p>Tạo nhiệm vụ, kiểm tra thông tin địa điểm và ghi nhận kết quả theo tiêu chí cụ thể.</p>
           <div className={styles.proof} aria-label="Điểm nổi bật">
-            <span><strong>10K+</strong> đánh giá</span>
-            <span><strong>5K+</strong> sản phẩm</span>
+            <span><strong>Contributor</strong> được xác minh</span>
+            <span><strong>Tiêu chí</strong> rõ ràng</span>
           </div>
         </div>
         <div className={styles.decoration} aria-hidden="true" />
       </section>
 
       <section className={styles.formSide}>
-        <div className={styles.mobileBrand}><a href="/">Review<span>Shop</span></a></div>
+        <div className={styles.mobileBrand}><a href="/"><span className={styles.brandMark}><ReviewGgmMark /></span><span>Review<span>GGM</span></span></a></div>
         <div className={styles.card}>
           <header className={styles.heading}>
             <h2>{title}</h2>
@@ -26,9 +27,8 @@ export function AuthLayout({ children, title, description }) {
           </header>
           {children}
         </div>
-        <p className={styles.footer}>© {new Date().getFullYear()} Review Shop</p>
+        <p className={styles.footer}>© {new Date().getFullYear()} Review GG Maps</p>
       </section>
     </main>
   )
 }
-

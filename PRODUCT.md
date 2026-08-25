@@ -1,18 +1,20 @@
-# Review Shop Product Context
+# Review GG Maps Product Context
 
-Review Shop is a Vietnamese marketplace connecting clients with freelancers through
-structured work, review content, milestones and transparent payouts.
+Review GG Maps is a Vietnamese platform for evaluating Google Maps content and
+Contributor accounts. It helps people complete and assess map-related review tasks
+through clear criteria, structured evidence and transparent outcomes.
 
 ## Audience
 
-- Clients who need reliable execution and visible progress.
-- Freelancers who want qualified opportunities and reputation built from completed work.
-- Admins who need clear, accountable operational workflows.
+- Clients who need reliable Google Maps evaluations and visible results.
+- Reviewers/Freelancers who complete map tasks and build reputation from accurate work.
+- Contributors who need their Google Maps account and review activity understood.
+- Admins who need clear, accountable review operations.
 
 ## Product promise
 
-Make collaboration easier to trust by making expectations, evidence, progress and
-money explicit.
+Make Google Maps evaluation easier to trust by making task criteria, account context,
+evidence and outcomes explicit.
 
 ## Brand commitments
 
@@ -34,6 +36,6 @@ money explicit.
 
 ## Surface modes
 
-- Homepage: persuade through proof and a clear next step.
+- Homepage: explain the evaluation model and establish trust through evidence.
 - Auth and onboarding: reassure and reduce uncertainty.
-- Dashboards: operate quickly with dense, scannable information.
+- Dashboards: review, compare and operate quickly with dense, scannable information.

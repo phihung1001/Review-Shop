@@ -9,12 +9,13 @@ import { accountBalance } from '@/features/account/model/accountBalance.js'
 import { AccountBalanceSummary } from '@/features/account/ui/AccountBalanceSummary.jsx'
 import { ThemeToggle } from '@/app/theme/ThemeToggle.jsx'
 import { FreelancerWithdrawalDrawer } from '@/features/withdrawals/ui/FreelancerWithdrawalDrawer.jsx'
+import { ReviewGgmMark } from '@/shared/ui/branding/ReviewGgmMark.jsx'
 import styles from './AppLayout.module.css'
 
 const navigation = [
   { label: 'Cách hoạt động', href: '#workflow' },
   { label: 'Dành cho bạn', href: '#audience' },
-  { label: 'Cơ hội nổi bật', href: '#opportunities' },
+  { label: 'Nhiệm vụ đánh giá', href: '#opportunities' },
   { label: 'Câu hỏi thường gặp', href: '#faq' },
 ]
 
@@ -99,7 +100,7 @@ export function AppLayout({ children, dashboard = false }) {
     <div className={styles.shell}>
       <header className={styles.header}>
         <div className={`${styles.container} ${dashboard ? styles.dashboardContainer : ''}`}>
-          <a className={styles.brand} href="/" aria-label="Review Shop - Trang chủ"><span className={styles.brandMark}>R</span><span>Review<span className={styles.brandAccent}>Shop</span></span></a>
+          <a className={styles.brand} href="/" aria-label="Review GG Maps - Trang chủ"><span className={styles.brandMark}><ReviewGgmMark /></span><span>Review<span className={styles.brandAccent}>GGM</span></span></a>
           {!dashboard && <nav className={styles.desktopNav} aria-label="Điều hướng chính"><NavLinks /></nav>}
           <Flex gap="small" align="center" className={styles.desktopActions}>
             <ThemeToggle />
@@ -115,15 +116,15 @@ export function AppLayout({ children, dashboard = false }) {
       <footer className={styles.footer}>
         <div className={styles.container}>
           <div className={styles.footerGrid}>
-            <div><a className={styles.brand} href="/"><span className={styles.brandMark}>R</span><span>Review<span className={styles.brandAccent}>Shop</span></span></a><p>Nền tảng kết nối nhu cầu thật với kỹ năng phù hợp, hướng tới những lần hợp tác minh bạch và hiệu quả.</p></div>
-            <div><strong>Sản phẩm</strong><a href="#workflow">Cách hoạt động</a><a href="#opportunities">Cơ hội nổi bật</a></div>
+            <div><a className={styles.brand} href="/"><span className={styles.brandMark}><ReviewGgmMark /></span><span>Review<span className={styles.brandAccent}>GGM</span></span></a><p>Nền tảng đánh giá Google Maps với tiêu chí rõ ràng, bằng chứng đối chiếu và kết quả minh bạch.</p></div>
+            <div><strong>Sản phẩm</strong><a href="#workflow">Cách hoạt động</a><a href="#opportunities">Nhiệm vụ đánh giá</a></div>
             <div><strong>Tham gia</strong><a href="/register?role=CLIENT">Dành cho khách hàng</a><a href="/register?role=FREELANCER">Dành cho Freelancer</a></div>
             <div><strong>Hỗ trợ</strong><a href="#faq">Câu hỏi thường gặp</a><a href="/login">Đăng nhập</a></div>
           </div>
-          <div className={styles.copyright}>© {new Date().getFullYear()} Review Shop. Phiên bản sản phẩm đang phát triển.</div>
+          <div className={styles.copyright}>© {new Date().getFullYear()} Review GG Maps. Phát triển bởi BuildUp Software.</div>
         </div>
       </footer>
-      <Drawer title="Review Shop" placement="right" size="min(378px, 100vw)" open={menuOpen} onClose={closeMenu}>
+      <Drawer title="Review GG Maps" placement="right" size="min(378px, 100vw)" open={menuOpen} onClose={closeMenu}>
         <nav className={styles.mobileNav} aria-label="Điều hướng di động">
           <NavLinks onNavigate={closeMenu} />
           <div className={styles.mobileActions}>

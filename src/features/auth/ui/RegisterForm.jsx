@@ -66,15 +66,15 @@ export function RegisterForm() {
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
         {apiError && <Alert>{apiError}</Alert>}
         <fieldset className={styles.roleGroup}>
-          <legend>Bạn muốn tham gia với vai trò nào?</legend>
+          <legend>Bạn muốn tham gia đánh giá Google Maps với vai trò nào?</legend>
           <div className={styles.roleOptions}>
             <label className={styles.roleOption}>
               <input type="radio" name="role" value="CLIENT" checked={values.role === 'CLIENT'} onChange={update} />
-              <span><strong>Khách hàng</strong><small>Tìm kiếm và đánh giá dịch vụ</small></span>
+              <span><strong>Khách hàng</strong><small>Tạo nhiệm vụ đánh giá địa điểm</small></span>
             </label>
             <label className={styles.roleOption}>
               <input type="radio" name="role" value="FREELANCER" checked={values.role === 'FREELANCER'} onChange={update} />
-              <span><strong>Freelancer</strong><small>Cung cấp dịch vụ của bạn</small></span>
+              <span><strong>Freelancer</strong><small>Kiểm tra Maps và gửi bằng chứng</small></span>
             </label>
           </div>
         </fieldset>

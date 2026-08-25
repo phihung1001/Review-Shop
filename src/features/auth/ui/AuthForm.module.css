@@ -2,7 +2,7 @@
 .row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); }
 .link { color: var(--color-primary); font-size: .875rem; font-weight: 700; text-decoration: none; }
 .link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.submit { min-height: 48px; border: 0; border-radius: var(--radius-md); color: #fff; background: var(--color-primary); font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgb(79 70 229 / 20%); }
+.submit { min-height: 48px; border: 0; border-radius: var(--radius-md); color: var(--color-surface); background: var(--color-primary); font-weight: 800; cursor: pointer; box-shadow: var(--shadow-card-sm); }
 .submit:hover:not(:disabled) { background: var(--color-primary-hover); }
 .submit:focus-visible, .link:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
 .submit:disabled { cursor: wait; opacity: .65; }

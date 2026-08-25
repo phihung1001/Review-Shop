@@ -1,15 +1,16 @@
 .page { min-height: 100vh; display: grid; background: var(--color-surface); }
-.intro { display: none; position: relative; overflow: hidden; padding: var(--space-8); color: #fff; background: linear-gradient(145deg, #17134f 0%, #4f46e5 60%, #7c3aed 100%); }
-.brand, .mobileBrand a { font-size: 1.25rem; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
-.brand span, .mobileBrand span { color: #a5b4fc; }
+.intro { display: none; position: relative; overflow: hidden; padding: var(--space-8); color: var(--color-on-dark); background: var(--color-text); }
+.brand, .mobileBrand a { display: inline-flex; align-items: center; gap: var(--space-2); font-size: 1.25rem; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+.brandMark { width: 30px; height: 34px; display: inline-flex; }
+.brand span, .mobileBrand span { color: var(--color-primary); }
 .introContent { position: relative; z-index: 1; max-width: 34rem; margin-block: auto; }
-.eyebrow { margin: 0 0 var(--space-4); color: #c7d2fe; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 var(--space-4); color: var(--color-primary); font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .introContent h1 { margin: 0 0 var(--space-5); font-size: clamp(2.75rem, 5vw, 4.75rem); line-height: 1.02; letter-spacing: -.055em; }
-.introContent > p:not(.eyebrow) { max-width: 31rem; color: #e0e7ff; font-size: 1.05rem; line-height: 1.7; }
-.proof { display: flex; gap: var(--space-8); margin-top: var(--space-8); color: #c7d2fe; font-size: .875rem; }
+.introContent > p:not(.eyebrow) { max-width: 31rem; color: var(--color-on-dark-muted); font-size: 1.05rem; line-height: 1.7; }
+.proof { display: flex; gap: var(--space-8); margin-top: var(--space-8); color: var(--color-on-dark-muted); font-size: .875rem; }
 .proof span { display: grid; gap: var(--space-1); }
-.proof strong { color: #fff; font-size: 1.35rem; }
-.decoration { position: absolute; right: -15%; bottom: -25%; width: 30rem; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / 18%); border-radius: 50%; box-shadow: 0 0 0 5rem rgb(255 255 255 / 4%), 0 0 0 10rem rgb(255 255 255 / 3%); }
+.proof strong { display: block; color: var(--color-on-dark); font-size: 1.15rem; }
+.decoration { position: absolute; right: 8%; bottom: 10%; width: 12rem; height: 12rem; border: 1px solid var(--color-border-strong); opacity: .35; }
 .formSide { min-width: 0; display: flex; flex-direction: column; padding: var(--space-5); }
 .mobileBrand { margin-bottom: var(--space-8); }
 .mobileBrand a { color: var(--color-text); }
@@ -19,4 +20,3 @@
 .heading p { margin: 0; color: var(--color-text-muted); line-height: 1.6; }
 .footer { margin: var(--space-8) 0 0; color: var(--color-text-subtle); font-size: .75rem; text-align: center; }
 @media (min-width: 56rem) { .page { grid-template-columns: minmax(26rem, 1.05fr) minmax(30rem, .95fr); } .intro { display: flex; flex-direction: column; } .formSide { padding: var(--space-8); } .mobileBrand { display: none; } }
-

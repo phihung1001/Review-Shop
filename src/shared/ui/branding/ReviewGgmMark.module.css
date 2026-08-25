@@ -1,0 +1,5 @@
+.mark { display: block; width: 100%; height: 100%; overflow: visible; }
+.pin { fill: var(--color-brand-blue); }
+.inner { fill: var(--color-brand-teal); opacity: .88; }
+.grid { fill: none; stroke: var(--color-surface); stroke-linecap: round; stroke-width: 1.3; opacity: .9; }
+.star { fill: var(--color-brand-star); stroke: var(--color-surface); stroke-linejoin: round; stroke-width: 1.1; }

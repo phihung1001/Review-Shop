@@ -1,13 +1,13 @@
-# Review Shop Design Language
+# Review GG Maps Design Language
 
-This is the visual source of truth for Review Shop UI work. It follows the
+This is the visual source of truth for Review GG Maps UI work. It follows the
 Impeccable anti-slop principles while respecting Ant Design and the repository UI
 guidelines.
 
 ## Direction
 
-**Verified work ledger**: a composed, editorial marketplace that makes work,
-reviews and payouts feel concrete and trustworthy. The interface should feel
+**Verified Google Maps evaluation record**: a composed, editorial evaluation product
+that makes map tasks, Contributor context, evidence and outcomes feel concrete and trustworthy. The interface should feel
 intentional and useful, not like a generic SaaS template.
 
 ## Do
@@ -18,7 +18,8 @@ intentional and useful, not like a generic SaaS template.
   diacritic rendering differences across platforms.
 - Use rules, whitespace, alignment and data grouping before adding containers.
 - Keep cards flat or lightly elevated; reserve larger radius for primary surfaces.
-- Make the product's evidence visible: status, review, milestone, amount and owner.
+- Make the product's evidence visible: Google Maps profile, task criteria, review,
+  status, source, outcome and owner.
 - Use motion only to clarify state changes, with transform/opacity preferred.
 
 ## Don't

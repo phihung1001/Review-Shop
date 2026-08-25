@@ -1,6 +1,7 @@
 .shell { min-height: 100vh; }
 .sider { border-inline-end: 1px solid var(--color-border); }
-.brand { display: flex; min-height: 64px; align-items: center; padding-inline: var(--space-5); color: var(--color-primary); font-size: 1.1rem; font-weight: 800; }
+.brand { display: flex; min-height: 64px; align-items: center; gap: var(--space-2); padding-inline: var(--space-5); color: var(--color-primary); font-size: 1.1rem; font-weight: 800; }
+.brandMark { width: 26px; height: 31px; display: inline-flex; }
 .header { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding-inline: var(--space-3); border-block-end: 1px solid var(--color-border); background: var(--color-surface); }
 .title, .buttonLabel { display: none; }
 .headerActions { flex: 0 0 auto; }
