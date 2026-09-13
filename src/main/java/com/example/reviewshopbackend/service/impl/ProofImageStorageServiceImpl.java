@@ -58,16 +58,16 @@ public class ProofImageStorageServiceImpl implements ProofImageStorageService {
         if (extension == null) {
             throw new IllegalArgumentException("Only JPEG, PNG and WebP images are supported");
         }
-        if (request.fileSize() > properties.maxImageSize()) {
+        if (request.size() > properties.maxImageSize()) {
             throw new IllegalArgumentException("Image exceeds the maximum allowed size");
         }
         String key = "proofs/" + freelancer.getId() + "/" + UUID.randomUUID() + extension;
         PutObjectRequest put = PutObjectRequest.builder()
-                .bucket(properties.bucket()).key(key).contentType(contentType).contentLength(request.fileSize()).build();
+                .bucket(properties.bucket()).key(key).contentType(contentType).contentLength(request.size()).build();
         var signed = presigner.presignPutObject(PutObjectPresignRequest.builder()
                 .signatureDuration(properties.uploadUrlDuration()).putObjectRequest(put).build());
         return new ImageUploadResponse(key, signed.url().toString(),
-                Map.of("Content-Type", contentType, "Content-Length", Long.toString(request.fileSize())),
+                Map.of("Content-Type", contentType, "Content-Length", Long.toString(request.size())),
                 Instant.now(clock).plus(properties.uploadUrlDuration()));
     }
 

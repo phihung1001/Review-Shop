@@ -26,11 +26,11 @@ public class PayoutMethodImageStorageServiceImpl implements PayoutMethodImageSto
                 .orElseThrow(() -> new AccessDeniedException("Freelancer not found"));
         String type = request.contentType().trim().toLowerCase(Locale.ROOT); String extension = EXTENSIONS.get(type);
         if (extension == null) throw new IllegalArgumentException("Only JPEG, PNG and WebP images are supported");
-        if (request.fileSize() > properties.maxImageSize()) throw new IllegalArgumentException("Image exceeds the maximum allowed size");
+        if (request.size() > properties.maxImageSize()) throw new IllegalArgumentException("Image exceeds the maximum allowed size");
         String key = "payout-methods/" + user.getId() + "/" + UUID.randomUUID() + extension;
-        PutObjectRequest put = PutObjectRequest.builder().bucket(properties.bucket()).key(key).contentType(type).contentLength(request.fileSize()).build();
+        PutObjectRequest put = PutObjectRequest.builder().bucket(properties.bucket()).key(key).contentType(type).contentLength(request.size()).build();
         var signed = presigner.presignPutObject(PutObjectPresignRequest.builder().signatureDuration(properties.uploadUrlDuration()).putObjectRequest(put).build());
-        return new ImageUploadResponse(key, signed.url().toString(), Map.of("Content-Type", type, "Content-Length", Long.toString(request.fileSize())), Instant.now().plus(properties.uploadUrlDuration()));
+        return new ImageUploadResponse(key, signed.url().toString(), Map.of("Content-Type", type, "Content-Length", Long.toString(request.size())), Instant.now().plus(properties.uploadUrlDuration()));
     }
     public String requireOwnedObjectKey(String value, Long freelancerId) {
         String key = value.trim();

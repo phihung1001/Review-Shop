@@ -1,138 +1,127 @@
 # Các lệnh vận hành trên VPS
 
-Tài liệu này chứa các lệnh thường dùng khi vận hành project bằng Docker Compose.
+## Cấu trúc thực tế
 
-## 1. Vào thư mục project
+```text
+/opt/review-shop/
+├── app/                 # Git repository Backend, branch backend
+├── frontend/            # Git repository Frontend, branch frontend
+└── docker-compose.yml   # Compose chạy backend, frontend và MySQL
+```
+
+## Cập nhật Backend
+
+```bash
+cd /opt/review-shop/app
+git status
+git pull --ff-only origin backend
+
+cd /opt/review-shop
+docker compose up -d --build --force-recreate backend
+docker compose ps backend
+docker compose logs --tail=200 backend
+```
+
+## Cập nhật Frontend
+
+Frontend được build từ context `/opt/review-shop/frontend`. Dockerfile chạy `npm ci`, `npm run build`, rồi copy `dist` vào Nginx.
+
+```bash
+cd /opt/review-shop/frontend
+git status
+git pull --ff-only origin frontend
+
+cd /opt/review-shop
+docker compose build frontend
+docker compose up -d --force-recreate frontend
+docker compose ps frontend
+docker compose logs --tail=100 frontend
+```
+
+Có thể gộp hai bước build và recreate:
 
 ```bash
 cd /opt/review-shop
+docker compose up -d --build --force-recreate frontend
 ```
 
-## 2. Kiểm tra trạng thái service
+Không dùng `docker compose pull frontend`: image `review-shop-frontend:latest` được build trực tiếp trên VPS, không pull từ registry. Chỉ dùng `--no-cache` khi nghi ngờ cache:
 
 ```bash
+docker compose build --no-cache frontend
+docker compose up -d --force-recreate frontend
+```
+
+## Cập nhật toàn bộ hệ thống
+
+```bash
+cd /opt/review-shop/app
+git pull --ff-only origin backend
+cd /opt/review-shop/frontend
+git pull --ff-only origin frontend
+cd /opt/review-shop
+docker compose config
+docker compose up -d --build --force-recreate backend frontend
 docker compose ps
 ```
 
-## 3. Khởi động, dừng và khởi động lại
+## Kiểm tra service, API và FE
 
 ```bash
-# Khởi động ở background
-docker compose up -d
-
-# Dừng service nhưng giữ dữ liệu
-docker compose stop
-
-# Khởi động lại một service
-docker compose restart backend
-
-# Dừng và xóa container/network, không xóa volume
-docker compose down
-```
-
-Không chạy `docker compose down -v` nếu chưa chắc chắn, vì lệnh này xóa volume database.
-
-## 4. Xem log
-
-```bash
-# Xem log realtime
-docker compose logs -f backend
-
-# Xem 100 dòng cuối
-docker compose logs --tail=100 backend
-
-# Dừng xem log realtime
-# Nhấn Ctrl + C
-```
-
-## 5. Build và deploy lại backend
-
-```bash
-docker compose build backend
-docker compose up -d --force-recreate backend
-docker compose logs --tail=100 backend
-```
-
-Nếu chỉ thay đổi `.env`, không cần build image:
-
-```bash
-docker compose up -d --force-recreate backend
-```
-
-## 6. Kiểm tra API
-
-```bash
-curl -i http://127.0.0.1:8080/actuator/health
+cd /opt/review-shop
+docker compose ps
+docker compose logs --tail=200 backend
+docker compose logs --tail=100 frontend
 curl -i http://127.0.0.1:8080/api/v1/required-levels
+curl -I http://127.0.0.1:8081
 ```
 
-HTTP `401` nghĩa là API đã phản hồi nhưng endpoint yêu cầu xác thực. Kiểm tra thêm log nếu nhận `connection refused` hoặc container bị restart.
+Backend hiện map `127.0.0.1:8080 -> 8080`; Frontend map `127.0.0.1:8081 -> 80`. Project chưa bật Spring Actuator; response `401` từ API vẫn chứng minh backend đã nhận request.
 
-## 7. Kiểm tra file `.env`
+Kiểm tra image/container FE:
 
 ```bash
-nano /opt/review-shop/.env
-cat /opt/review-shop/.env
-grep -E 'DB_|MYSQL_|WITHDRAWAL_' /opt/review-shop/.env
+docker inspect review-shop-frontend --format 'created={{.Created}} image={{.Image}}'
+docker exec review-shop-frontend ls -l /usr/share/nginx/html/index.html
 ```
 
-Không commit `.env` và không gửi nội dung secret lên chat hoặc Git.
-
-## 8. Kiểm tra biến môi trường trong container
+## Nginx và domain
 
 ```bash
-docker inspect review-shop-backend \
-  --format '{{range .Config.Env}}{{println .}}{{end}}' | grep -E 'DB_|MYSQL_|WITHDRAWAL_'
+nginx -t
+systemctl reload nginx
+nginx -T 2>/dev/null | grep -n -E '8080|8081|proxy_pass|root'
+curl -I https://<domain>
 ```
 
-## 9. Truy cập MySQL
+Nếu `127.0.0.1:8081` là bản mới nhưng domain là bản cũ, kiểm tra Nginx, DNS, Cloudflare/CDN và cache trình duyệt.
 
-Đăng nhập bằng user ứng dụng mà không ghi password trực tiếp vào shell history:
-
-```bash
-docker compose exec mysql sh -c 'mysql -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"'
-```
-
-Trong MySQL:
-
-```sql
-SHOW DATABASES;
-USE `review-shop-prod`;
-SHOW TABLES;
-DESCRIBE users;
-SELECT COUNT(*) FROM users;
-SELECT * FROM users LIMIT 10;
-EXIT;
-```
-
-## 10. Backup database
+## Backup database
 
 ```bash
 mkdir -p /opt/review-shop/backups
-docker compose exec -T mysql sh -c 'mysqldump -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' > /opt/review-shop/backups/review-shop-$(date +%F-%H%M).sql
-```
-
-Kiểm tra file backup:
-
-```bash
+cd /opt/review-shop
+docker compose exec -T mysql sh -c 'mysqldump -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"' \
+  > /opt/review-shop/backups/review-shop-$(date +%F-%H%M).sql
 ls -lh /opt/review-shop/backups
 ```
 
-## 11. Kiểm tra IP server
+Không chạy `docker compose down -v`; có thể xóa volume database. Backup trước Flyway migration hoặc deploy Backend.
+
+## Rollback
 
 ```bash
-curl -4 ifconfig.me
-hostname -I
+git -C /opt/review-shop/app rev-parse HEAD
+git -C /opt/review-shop/frontend rev-parse HEAD
 ```
 
-Backend hiện được bind tại `127.0.0.1:8080`; nên dùng Nginx reverse proxy thay vì expose trực tiếp backend hoặc MySQL ra Internet.
-
-## 12. Cập nhật source từ Git
+Sau khi xác định commit cũ:
 
 ```bash
-git pull
-docker compose build backend
-docker compose up -d --force-recreate backend
-docker compose ps
+git -C /opt/review-shop/app checkout <backend-commit-cu>
+git -C /opt/review-shop/frontend checkout <frontend-commit-cu>
+cd /opt/review-shop
+docker compose up -d --build --force-recreate backend frontend
 ```
-ssh -N -L 18081:127.0.0.1:8081 root@169.58.210.240
+
+Không xóa volume MySQL khi rollback.
